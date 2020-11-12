@@ -501,6 +501,7 @@ namespace Terraria.ModLoader
 			GlobalBgStyleLoader.Unload();
 			WaterStyleLoader.Unload();
 			WaterfallStyleLoader.Unload();
+			PlayerDrawLayerHooks.Unload();
 			WorldHooks.Unload();
 			SystemHooks.Unload();
 			ResizeArrays(true);
@@ -547,6 +548,7 @@ namespace Terraria.ModLoader
 			MountLoader.ResizeArrays();
 			BuffLoader.ResizeArrays();
 			PlayerHooks.RebuildHooks();
+			PlayerDrawLayerHooks.ResizeArrays();
 			WorldHooks.ResizeArrays();
 
 			if (!Main.dedServ) {
