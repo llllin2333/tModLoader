@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using Terraria.DataStructures;
 using Terraria.GameContent.UI;
 using Terraria.GameInput;
 using Terraria.ID;
@@ -482,7 +483,7 @@ namespace Terraria.ModLoader
 			ModPrefix.Unload();
 			ModDust.Unload();
 			TileLoader.Unload();
-			ModTileEntity.UnloadAll();
+			TileEntity.manager.Reset();
 			WallLoader.Unload();
 			ProjectileLoader.Unload();
 			NPCLoader.Unload();
