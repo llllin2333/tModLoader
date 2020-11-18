@@ -712,19 +712,20 @@ namespace Terraria.ModLoader
 
 		private static HookList HookUseItem = AddHook<Func<Item, Player, bool>>(g => g.UseItem);
 		/// <summary>
-		/// Returns true if any of ModItem.UseItem or GlobalItem.UseItem return true
+		/// Returns true if none of ModItem.UseItem or GlobalItem.UseItem return false
 		/// Does not fail fast (calls every hook)
 		/// </summary>
 		public static bool UseItem(Item item, Player player) {
 			if (item.IsAir)
 				return false;
 
-			bool flag = false;
+			bool flag = true;
+
 			if (item.modItem != null)
-				flag |= item.modItem.UseItem(player);
+				flag &= item.modItem.UseItem(player);
 
 			foreach (var g in HookUseItem.Enumerate(item))
-				flag |= g.UseItem(item, player);
+				flag &= g.UseItem(item, player);
 
 			return flag;
 		}
